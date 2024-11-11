@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <input type="text" placeholder="first_number" id="first_number" />
+    <input type="text" placeholder="second_number" id="second_number" />
+    <button onclick="done()">Submit</button>
+    <h1>Hello</h1>
+
+    <script>
+      async function done() {
+        const a = document.getElementById("first_number").value;
+        const b = document.getElementById("second_number").value;
+        const response = await fetch("http://localhost:4000/data", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json", // Specify that the request body is JSON
+          },
+
+          body: JSON.stringify({
+            a: a,
+            b: b,
+          }),
+        });
+        console.log(response);
+      }
+    </script>
+  </body>
+</html>
